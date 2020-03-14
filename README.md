@@ -1,1 +1,5 @@
-# OpenSoft-2020-tasks-
+OpenSoft 2020 :- 
+
+To run the extract_face_features.py one needs to have the shape_predictor_68_face_landmarks.dat in the 
+folder where they have the program. 
+Download it from :- https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat

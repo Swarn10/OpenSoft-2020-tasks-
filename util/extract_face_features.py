@@ -14,6 +14,12 @@ def get_features(im) :   # This function detects the bounding-box for the face a
 						             # facial landmarks as keys and their list of coordinates as values 	
 	
 	rectangle = detector(im,1) 
+	
+	if len(rectangle) == 0 : 
+		print("No faces detected !!!") 
+		features = [] 
+		features_dict = {} 
+		return (features,features_dict) 
 
 	features = [(p.x,p.y) for p in predictor(im,rectangle[0]).parts()]  
 	features_dict = {"Jaw":[],"Left eyebrow":[], "Right eyebrow":[], "Nose":[], "Left eye" : [], "Right eye": [], "Mouth" : []} 
@@ -50,14 +56,15 @@ def put_features(im, features) :  # This function plots those 68 points as cirlc
 
 
 if __name__ == '__main__' : 
-	image = cv2.imread('indian2.jpg') 
+	image = cv2.imread('no_face.jpg') 
 	features_dict,features = get_features(image) 
 
 	print(features_dict)
 	print("\n")
 	print(features)  
 
-	img_with_features = put_features(image,features) 
-	cv2.imwrite('Result2.jpg',img_with_features) 
+	if len(features) != 0 : 
+		img_with_features = put_features(image,features) 
+		cv2.imwrite('Result4.jpg',img_with_features) 
 
 
